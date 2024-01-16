@@ -9,20 +9,12 @@ import (
 	_ "github.com/lib/pq"
 )
 
-
-
-type Todo struct {
-	ID     int    `json:"id"`
-	Title  string `json:"title"`
-	Content string `json:"content"`
-	Done bool `json:"done"`
-}
-
-var todos []Todo
-
 func main() {
+
 	database.Connect()
+
 	app := fiber.New()
+	
 	app.Use(logger.New())
 	app.Use(cors.New())
 	router.SetupRoutes(app)
