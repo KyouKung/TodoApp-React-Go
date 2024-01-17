@@ -19,5 +19,9 @@ func main() {
 	app.Use(cors.New())
 	router.SetupRoutes(app)
 
+	app.Use(func(c *fiber.Ctx) error {
+		return c.SendStatus(404)
+	   })
+
 	app.Listen(":8080")
 }
